@@ -78,11 +78,11 @@ public class AlbumManagement {
             System.out.println("Current rating: " + album.getRating());
             boolean menu = true;
             while (menu) {
-                System.out.print("New rating (1-5): ");
+                System.out.print("New rating (1-10): ");
                 int rating = scanner.nextInt();
                 scanner.nextLine();
-                if (rating < 1 || rating > 5) {
-                    System.out.println("Rating can only be set to numbers from 1 to 5");
+                if (rating < 1 || rating > 10) {
+                    System.out.println("Rating can only be set to numbers from 1 to 10");
                 } else {
                     album.setRating(rating);
                     System.out.println("Rating updated");
@@ -122,11 +122,16 @@ public class AlbumManagement {
     public static void findAlbumByArtist() {
         System.out.print("\nArtist: ");
         String artist = scanner.nextLine();
-
+        boolean albumExists = false;
         for (int i = 0; i < counter; i++) {
             if (albums[i].getArtist().equalsIgnoreCase(artist)) {
+                albumExists = true;
                 System.out.println(albums[i]);
             }
+        }
+        if (!albumExists) {
+            System.out.println("There's no albums by " + artist + " in the catalog");
+            AlbumMain.mainMenu();
         }
     }
 
@@ -147,12 +152,12 @@ public class AlbumManagement {
     }
 
     public static void findAlbumByRating() {
-        System.out.print("\nScore: ");
-        int score = scanner.nextInt();
+        System.out.print("\nRating: ");
+        int rating = scanner.nextInt();
         scanner.nextLine();
 
         for (int i = 0; i < counter; i++) {
-            if (albums[i].getRating() == score) {
+            if (albums[i].getRating() == rating) {
                 System.out.println(albums[i]);
             }
         }
@@ -172,7 +177,7 @@ public class AlbumManagement {
         for (int i = 0; i < counter; i++) {
             scoreSum = scoreSum + albums[i].getRating();
         }
-        System.out.println("The average score for all the albums is: " + (scoreSum / counter));
+        System.out.println("The average album rating is: " + (scoreSum / counter));
     }
 
     public static void sortByYear() {

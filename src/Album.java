@@ -26,7 +26,7 @@ public class Album {
                 "Title: " + title + "\n" +
                 "Artist: " + artist + "\n" +
                 "Year released: " + year + "\n" +
-                "Your score: " + rating + "\n" +
+                "Your rating: " + rating + "\n" +
                 "Album id: " + id;
     }
 
